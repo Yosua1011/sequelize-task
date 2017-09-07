@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TEACHERS</title>
+  </head>
+  <body>
+    <h1>TEACHERS</h1>
+    <hr>
+    <a href="/"> Back To Home </a>
+    <h2>Teachers Data</h2>
+    <table border="1">
+      <tr>
+        <th>Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+      </tr>
+      <% data.forEach(row => { %>
+      <tr>
+        <td><%=row.id%></td>
+        <td><%=row.first_name%></td>
+        <td><%=row.last_name%></td>
+        <td><%=row.email%></td>
+      </tr>
+      <% }) %>
+    </table>
+  </body>
+</html>

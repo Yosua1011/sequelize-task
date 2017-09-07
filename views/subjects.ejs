@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SUBJECTS</title>
+  </head>
+  <body>
+    <h1>SUBJECTS</h1>
+    <hr>
+    <a href="/"> Back To Home </a>
+    <h2>Subjects Data</h2>
+    <table border="1">
+      <tr>
+        <th>Id</th>
+        <th>Subject Name</th>
+      </tr>
+      <% data.forEach(row => { %>
+      <tr>
+        <td><%=row.id%></td>
+        <td><%=row.subject_name%></td>
+      </tr>
+      <% }) %>
+    </table>
+  </body>
+</html>

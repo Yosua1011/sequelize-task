@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>EDIT STUDENTS DATA</title>
+  </head>
+  <body>
+    <h1>Edit Students Data</h1>
+    <hr>
+    <a href="/"> Back To Home </a>
+    <br><br>
+    <a href="/students">show all data</a>
+    <br>
+    <form class="" action="/students/edit/<%= student[0].id%>" method="POST">
+    <p> First Name
+        <br>
+      <input type="text" name="first_name" value="<%= student[0].first_name%>" placeholder="First Name">
+    </p>
+    <p> Last Name
+        <br>
+      <input type="text" name="last_name" value="<%= student[0].last_name%>" placeholder="Last Name">
+    </p>
+    <p> Email
+        <br>
+      <input type="email" name="email" value="<%= student[0].email%>" placeholder="email@gmail.com">
+    </p>
+      <input type="submit" value="Save">
+    </form>
+  </body>
+</html>
