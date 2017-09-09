@@ -3,9 +3,11 @@ let router = express.Router();
 const models = require('../models')
 
 router.get('/', (req, res) => {
-    models.Subjects.findAll()
+    models.Subjects.findAll({
+        include: [{model: models.Teacher}]
+    })
         .then(data_subjects => {
-            res.render('subjects', {data: data_subjects})
+            res.render('subjects', {data_subjects: data_subjects})
         })
         .catch(err => {
             console.log(err)

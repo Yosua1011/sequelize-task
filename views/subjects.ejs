@@ -12,11 +12,22 @@
       <tr>
         <th>Id</th>
         <th>Subject Name</th>
+        <th>Teacher</th>
       </tr>
-      <% data.forEach(row => { %>
+      <% data_subjects.forEach(row => { %>
       <tr>
         <td><%=row.id%></td>
         <td><%=row.subject_name%></td>
+        <td>
+          <% if(row.Teachers.length > 0) { %>
+            <% row.Teachers.forEach((teacher, index) => { %>
+              <%= (index+1) + '. ' + teacher.first_name + ' ' + teacher.last_name%>
+              <br></br>
+            <% }) %>
+            <% } else { %>
+              -
+          <% } %>
+        </td>
       </tr>
       <% }) %>
     </table>
