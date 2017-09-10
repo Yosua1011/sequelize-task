@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h1><%= data_subjects[0].subject_name%></h1>
+    <a href="/subjects">Return to Subject List</a>
+    <br>
+    <table border="1">
+        <tr>
+            <td>Name</td>
+            <td>Score</td>
+        </tr>
+            <% data_subjects[0].Conjunctions.forEach(row => { %>
+        <tr>
+            <td><%= row.Student.first_name + ' ' + row.Student.last_name%></td>
+            <td>
+                <% if(row.score !== null) {%>
+                    <%= row.score%>
+                <% } else { %>
+                    <a href="/subjects/<%= row.id%>/givescore">Give Score</a>
+                <% } %>
+            </td>
+        </tr>
+           <% }) %>
+    </table>
+</body>
+</html>

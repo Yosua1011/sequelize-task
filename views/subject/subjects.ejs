@@ -11,8 +11,9 @@
     <table border="1">
       <tr>
         <th>Id</th>
-        <th>Subject Name</th>
-        <th>Teacher</th>
+        <th>Subject's Name</th>
+        <th>Teacher's Name</th>
+        <th>Action</th>
       </tr>
       <% data_subjects.forEach(row => { %>
       <tr>
@@ -27,6 +28,9 @@
             <% } else { %>
               -
           <% } %>
+        </td>
+        <td>
+          <a href="/subjects/<%=row.id%>/enrolledstudents">Enrolled Students</a>
         </td>
       </tr>
       <% }) %>

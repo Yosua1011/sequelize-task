@@ -7,9 +7,12 @@
     <h1>Edit Students Data</h1>
     <hr>
     <a href="/"> Back To Home </a>
-    <br><br>
-    <a href="/students">show all data</a>
     <br>
+    <a href="/students">Show All Students</a>
+    <%if (data_error === true) { %>
+      <font color="red">VALIDATION ERROR, EMAIL FORMAT IS INCORRECT. IT BELONGS TO SOMEONE ELSE</font>
+    <% } %>
+    <br><br>
     <form class="" action="/students/edit/<%= student[0].id%>" method="POST">
     <p> First Name
         <br>
@@ -21,7 +24,7 @@
     </p>
     <p> Email
         <br>
-      <input type="email" name="email" value="<%= student[0].email%>" placeholder="email@gmail.com">
+      <input type="email" name="email" value="<%= student[0].email%>" placeholder="your@email.com">
     </p>
       <input type="submit" value="Save">
     </form>

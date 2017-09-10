@@ -3,20 +3,23 @@ let router = express.Router();
 const models = require('../models')
 
 router.get('/', (req, res) => {
-    models.Teacher.findAll({ include: [{model: models.Subjects}] })
-        .then(data_teachers => {
-            // res.send(data_teachers)
-            res.render('teacher/teachers', {data_teachers: data_teachers})
-        })
-        // .catch(err => {
-        //     console.log(err)
-        // })
+    models.Teacher.findAll({ include: [{model: models.Subjects}], 
+        order: [
+            ['first_name', 'ASC']
+        ] 
+    })
+    .then(data_teachers => {
+        res.render('teacher/teachers', {data_teachers: data_teachers})
+    })
+    .catch(err => {
+        console.log(err)
+    })
 })
 
 router.get('/add', (req,res) => {
     models.Subjects.findAll()
     .then(subjects => {
-        res.render('teacher/teachers_add', {data_subjects: subjects})
+        res.render('teacher/teacher_add', {data_subjects: subjects})
     })
     .catch(err => {
         console.log(err)
@@ -33,7 +36,7 @@ router.post('/add', (req, res) => {
         udpatedAt: new Date()
     })
     .then(teachers => {
-        res.redirect('/teacher/teachers')
+        res.redirect('/teachers')
     })
     .catch(err => {
         console.log(err)
@@ -61,8 +64,7 @@ router.get('/edit/:id', (req,res) => {
         where: {
             id: `${req.params.id}`
         }
-    }
-    )
+    })
     .then(teacher => {
         models.Subjects.findAll()
         .then( subjects => {
