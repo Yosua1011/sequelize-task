@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>EDIT TEACHER</title>
-  </head>
+  <%- include ../partial/head %>
   <body>
-    <h1>EDIT TEACHER</h1>
-    <hr>
-    <a href="/teachers">Show All Teachers</a>
+    <%- include ../partial/menubar %>
     <br><br>
     <form class="" action="/teachers/edit/<%= teacher[0].id%>" method="POST">
       <p>First Name

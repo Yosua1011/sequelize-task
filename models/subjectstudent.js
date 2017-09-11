@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var Conjunction = sequelize.define('Conjunction', {
+  var SubjectStudent = sequelize.define('SubjectStudent', {
     SubjectId: DataTypes.INTEGER,
     StudentId: DataTypes.INTEGER,
     score: DataTypes.INTEGER
@@ -12,9 +12,9 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  Conjunction.associate = function(models) {
-    Conjunction.belongsTo(models.Subjects)
-    Conjunction.belongsTo(models.Student)
+  SubjectStudent.associate = function (models) {
+    SubjectStudent.belongsTo(models.Subjects)
+    SubjectStudent.belongsTo(models.Student)
   }
-  return Conjunction;
+  return SubjectStudent;
 };

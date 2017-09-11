@@ -17,11 +17,12 @@
   },
   "homepage": "https://github.com/Yosua1011/sequelize-task#readme",
   "dependencies": {
-    "body-parser": "^1.17.2",
+    "body-parser": "^1.18.0",
     "ejs": "^2.5.7",
     "express": "^4.15.4",
     "pg": "^7.3.0",
     "sequelize": "^4.8.2",
-    "sqlite3": "^3.1.9"
-  }
+    "sqlite3": "^3.1.10"
+  },
+  "devDependencies": {}
 }

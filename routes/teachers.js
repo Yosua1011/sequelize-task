@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
         ] 
     })
     .then(data_teachers => {
-        res.render('teacher/teachers', {data_teachers: data_teachers})
+        res.render('teacher/teachers', {data_teachers: data_teachers, title: 'Teachers'})
     })
     .catch(err => {
         console.log(err)
@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 router.get('/add', (req,res) => {
     models.Subjects.findAll()
     .then(subjects => {
-        res.render('teacher/teacher_add', {data_subjects: subjects})
+        res.render('teacher/teacher_add', {data_subjects: subjects, title: 'New Teacher'})
     })
     .catch(err => {
         console.log(err)
@@ -68,7 +68,7 @@ router.get('/edit/:id', (req,res) => {
     .then(teacher => {
         models.Subjects.findAll()
         .then( subjects => {
-            res.render('teacher/teacher_edit', {teacher: teacher, data_subjects: subjects})
+            res.render('teacher/teacher_edit', {teacher: teacher, data_subjects: subjects, title: 'Teachers Data Edit'})
         })
         .catch(err => {
             console.log(err)

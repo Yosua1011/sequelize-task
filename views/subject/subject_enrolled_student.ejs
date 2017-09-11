@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-</head>
+    <%- include ../partial/head %>
 <body>
-    <h1><%= data_subjects[0].subject_name%></h1>
-    <a href="/subjects">Return to Subject List</a>
-    <br>
+    <%- include ../partial/menubar %>
+    <br><br>
     <table border="1">
         <tr>
             <td>Name</td>
-            <td>Score</td>
+            <td>Score By Number</td>
+            <td>Score By Letter</td>
         </tr>
-            <% data_subjects[0].Conjunctions.forEach(row => { %>
+            <% data_subjects.Students.forEach(row => { %>
         <tr>
-            <td><%= row.Student.first_name + ' ' + row.Student.last_name%></td>
+            <td><%= row.first_name + ' ' + row.last_name%></td>
             <td>
-                <% if(row.score !== null) {%>
-                    <%= row.score%>
+                <% if(row.SubjectStudent.score !== null) {%>
+                    <%= row.SubjectStudent.score%>
                 <% } else { %>
-                    <a href="/subjects/<%= row.id%>/givescore">Give Score</a>
+                    <a href="#">Give Score</a>
                 <% } %>
+            </td>
+            <td>
+                <%= row.scoreLetter %>
             </td>
         </tr>
            <% }) %>

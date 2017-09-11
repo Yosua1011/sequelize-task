@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
         ]
     })
     .then(data_students => {
-        res.render('student/students', {data_students: data_students})
+        res.render('student/students', {data_students: data_students, title: 'Students'})
     })
     .catch(err => {
         console.log(err)
@@ -24,7 +24,7 @@ router.get('/add', (req,res) => {
         createdAt: new Date(),
         udpatedAt: new Date()
     }
-    res.render('student/student_add', {data: data_temporary, data_error: false}) //lempar ke form
+    res.render('student/student_add', {data: data_temporary, data_error: false, title: 'Add Student'}) //lempar ke form
 })
 
 router.post('/add', (req, res) => {
@@ -47,7 +47,7 @@ router.post('/add', (req, res) => {
             createdAt: new Date(),
             udpatedAt: new Date()
         }
-        res.render('student/student_add', {data: data_temporary, data_error: true}) 
+        res.render('student/student_add', {data: data_temporary, data_error: true, title: 'Add Student'}) 
     })
 })
 
@@ -74,7 +74,7 @@ router.get('/edit/:id', (req,res) => {
         }
     })
     .then(student => {
-        res.render('student/student_edit',{student: student, data_error: false})
+        res.render('student/student_edit',{student: student, data_error: false, title: 'Students Data Edit'})
     })
     .catch(err => {
         console.log(err)
@@ -112,7 +112,7 @@ router.post('/edit/:id',(req, res) => {
                         createdAt: new Date(),
                         udpatedAt: new Date()
                     }]
-                    res.render('student/student_edit',{student: data_temporary, data_error: true})
+                    res.render('student/student_edit',{student: data_temporary, data_error: true, title: 'Students Data Edit'})
                 })
                 .catch(err => {console.log('err 2 ' + err)})
             })
@@ -132,7 +132,7 @@ router.get('/:id/addsubject', (req,res) => {
     .then(student => {
         models.Subjects.findAll()
         .then(subjects => {
-            res.render('student/student_add_subject', {data_student: student, data_subjects: subjects})
+            res.render('student/student_add_subject', {data_student: student, data_subjects: subjects, title: 'Add Subject To Student'})
         })
         .catch(err => {
             console.log(err)
@@ -144,7 +144,7 @@ router.get('/:id/addsubject', (req,res) => {
 })
 
 router.post('/:id/addsubject', (req,res) => {
-    models.Conjunction.create({
+    models.SubjectStudent.create({
         StudentId: `${req.params.id}`,
         SubjectId: `${req.body.SubjectId}`,
         createdAt: new Date(),
