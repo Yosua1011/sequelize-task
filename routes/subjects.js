@@ -28,13 +28,13 @@ router.get('/:id/enrolledstudents', (req,res) => {
         ]
     })
     .then(data_subjects => {
-        if (data_subjects.length > 0) {
+        if (data_subjects[0].Students.length > 0) {
             let count = 0
             data_subjects[0].Students.map( student => {
                 student.scoreLetter = scoreLetter(student.SubjectStudent.score)
                 count++
                 if(count >= data_subjects[0].Students.length) {
-                    res.render('subject/subject_enrolled_student', {data_subjects: data_subjects[0], title: 'Student Score'})
+                    res.render('subject/subject_enrolled_student', {data_subjects: data_subjects[0], title: "Student's Score"})
                 }
             })
         } else {
