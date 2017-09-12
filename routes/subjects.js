@@ -3,6 +3,14 @@ let router = express.Router();
 const models = require('../models')
 var scoreLetter = require('../helpers/scoreLetter')
 
+router.use((req, res, next) => {
+    if(req.session.hasLogin && req.session.user.role !== 'teacher' ){
+        next()
+    } else {
+        res.render('accessDenied', {title: 'ACCESS DENIED'})
+    }
+  })
+
 router.get('/', (req, res) => {
     models.Subjects.findAll({
         include: [{model: models.Teacher}],
